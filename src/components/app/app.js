@@ -22,6 +22,7 @@ export default class App extends Component  {
     filter: 'all' //active, all, done
   };
 
+
   createTodoItem(label) {
     return {
       label,
@@ -47,27 +48,23 @@ export default class App extends Component  {
 
   addItem = (text) => {
     const newItem = this.createTodoItem(text);
-
     this.setState(({todoData}) => {
       const newArray = [
         ...todoData,
         newItem
       ];
-
       return {
         todoData: newArray
       }
     });
-
   };
+
 
   toggleProperty (arr, id, propName) {
     const idx = arr.findIndex((el) => el.id === id);
-
       //update object
       const oldItem = arr[idx];
       const newItem = {...oldItem, [propName]: !oldItem[propName]};
-
       //construct new Array
       return [
         ...arr.slice(0, idx),
@@ -76,7 +73,7 @@ export default class App extends Component  {
       ];   
   }
 
-
+  
   onToggleImportant = (id) => {
     this.setState(({todoData}) => {
       return {
